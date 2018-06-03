@@ -1,0 +1,29 @@
+{
+  "name": "graphql-proxy",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn neutrino build",
+    "lint": "yarn neutrino lint",
+    "test": "yarn neutrino test",
+    "cz": "git-cz"
+  },
+  "devDependencies": {
+    "@neutrinojs/airbnb-base": "^8.2.3",
+    "@neutrinojs/jest": "^8.2.3",
+    "@neutrinojs/library": "^8.2.3",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "neutrino": "^8.2.3"
+  },
+  "dependencies": {
+    "graphql": "^0.13.2",
+    "graphql-request": "^1.6.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
