@@ -1,5 +1,5 @@
 {
-    "name": "graphql-proxy",
+    "name": "@pi-cubed/graphql-proxy",
     "description": "Add proxy abilities to GraphQL servers",
     "version": "0.1.0",
     "main": "build/index.js",
