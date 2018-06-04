@@ -20,7 +20,7 @@ const request = async (_, { url, query, mutation }) => {
     return JSON.stringify(data);
 };
 
-const typeDefs = `
+export const proxyTypeDefs = `
     type Query {
         schema(url: String!): String!
         query(url: String!, query: String!): String!
@@ -30,7 +30,7 @@ const typeDefs = `
     }
 `;
 
-const resolvers = ({
+const getProxyResolvers = ({
     query = 'query',
     mutate = 'mutate',
     schema = 'schema'
@@ -47,16 +47,25 @@ const resolvers = ({
 /**
  * TODO docs
  */
-export const proxyServer = new GraphQLServer({
-    typeDefs,
-    resolvers
-});
+export default class ProxyServer extends GraphQLServer {
+    constructor(props) {
+        const typeDefs =
+            props && props.typeDefs
+                ? mergeTypes(proxyTypeDefs, props.typeDefs)
+                : proxyTypeDefs;
 
-/**
- * TODO docs
- */
-export const withProxy = ({ names }) => server =>
-    new GraphQLServer({
-        typeDefs: mergeTypes(typeDefs, server.getTypeDefs()),
-        resolvers: mergeResolvers(resolvers(names || {}), server.getResolvers())
-    });
+        const proxyResolvers = getProxyResolvers((props && props.names) || {});
+        const resolvers =
+            props && props.resolvers
+                ? mergeResolvers(proxyResolvers, props.resolvers)
+                : proxyResolvers;
+
+        const context = (props && props.context) || {};
+
+        super({
+            typeDefs,
+            resolvers,
+            context
+        });
+    }
+}
