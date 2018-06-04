@@ -1,53 +1,51 @@
 {
-  "name": "graphql-proxy",
-  "description": "Add proxy abilities to GraphQL servers",
-  "version": "0.1.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "build": "yarn neutrino build",
-    "lint": "yarn neutrino lint",
-    "test": "yarn neutrino test",
-    "cz": "git-cz",
-    "precommit": "pretty-quick --staged"
-  },
-  "devDependencies": {
-    "@neutrinojs/airbnb-base": "^8.2.3",
-    "@neutrinojs/jest": "^8.2.3",
-    "@neutrinojs/library": "^8.2.3",
-    "babel-plugin-dynamic-import-node": "^1.2.0",
-    "cz-conventional-changelog": "^2.1.0",
-    "husky": "^0.14.3",
-    "neutrino": "^8.2.3",
-    "prettier": "^1.13.4",
-    "pretty-quick": "^1.6.0"
-  },
-  "dependencies": {
-    "graphql": "^0.13.2",
-    "graphql-request": "^1.6.0"
-  },
-  "author": "Pi Cubed",
-  "homepage": "https://github.com/pi-cubed/graphql-proxy",
-  "repository": "https://github.com/pi-cubed/graphql-proxy",
-  "keywords": [
-    "graphql"
-  ],
-  "bugs": "https://github.com/pi-cubed/graphql-proxy/issues",
-  "contributors": [
-    {
-      "name": "Dylan Richardson",
-      "email": "dylanrichardson1996@gmail.com",
-      "url": "https://github.com/drich14"
+    "name": "graphql-proxy",
+    "description": "Add proxy abilities to GraphQL servers",
+    "version": "0.1.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "neutrino build",
+        "lint": "neutrino lint",
+        "test": "neutrino test",
+        "cz": "git-cz",
+        "precommit": "pretty-quick --staged"
     },
-    {
-      "name": "Craig Valenti",
-      "email": "cvalenti312@gmail.com",
-      "url": "https://github.com/CrazyCreje"
+    "devDependencies": {
+        "@neutrinojs/airbnb-base": "^8.2.3",
+        "@neutrinojs/jest": "^8.2.3",
+        "@neutrinojs/library": "^8.2.3",
+        "babel-plugin-dynamic-import-node": "^1.2.0",
+        "cz-conventional-changelog": "^2.1.0",
+        "husky": "^0.14.3",
+        "neutrino": "^8.2.3",
+        "prettier": "^1.13.4",
+        "pretty-quick": "^1.6.0",
+        "webpack": "4"
+    },
+    "dependencies": {
+        "graphql": "^0.13.2",
+        "graphql-request": "^1.6.0",
+        "graphql-yoga": "^1.14.6",
+        "merge-graphql-schemas": "^1.5.1"
+    },
+    "author": "Pi Cubed",
+    "homepage": "https://github.com/pi-cubed/graphql-proxy",
+    "repository": "https://github.com/pi-cubed/graphql-proxy",
+    "keywords": [
+        "graphql"
+    ],
+    "bugs": "https://github.com/pi-cubed/graphql-proxy/issues",
+    "contributors": [
+        {
+            "name": "Dylan Richardson",
+            "email": "dylanrichardson1996@gmail.com",
+            "url": "https://github.com/drich14"
+        }
+    ],
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
 }
