@@ -2,7 +2,7 @@
     "name": "graphql-proxy",
     "description": "Add proxy abilities to GraphQL servers",
     "version": "0.1.0",
-    "main": "index.js",
+    "main": "build/index.js",
     "license": "MIT",
     "scripts": {
         "build": "neutrino build",
@@ -10,7 +10,8 @@
         "test": "neutrino test",
         "dev": "yarn && run-p \"build --watch\" \"test --watch\" \"lint --watch\"",
         "cz": "git-cz",
-        "precommit": "pretty-quick --staged"
+        "precommit": "pretty-quick --staged",
+        "prepublish": "not-in-install && yarn build || true"
     },
     "devDependencies": {
         "@neutrinojs/airbnb-base": "^8.2.3",
@@ -29,6 +30,7 @@
         "graphql": "^0.13.2",
         "graphql-request": "^1.6.0",
         "graphql-yoga": "^1.14.6",
+        "in-publish": "^2.0.0",
         "merge-graphql-schemas": "^1.5.1"
     },
     "author": "Pi Cubed",
