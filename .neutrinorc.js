@@ -1,7 +1,9 @@
 const ESLINT_RULES = {
     'comma-dangle': ['warn', 'never'],
-    indent: ['warn', 4],
-    'no-unused-vars': ['warn']
+    indent: 'off',
+    'no-unused-vars': ['warn'],
+    'no-confusing-arrow': 'off',
+    'function-paren-newline': 'off'
 };
 
 module.exports = {

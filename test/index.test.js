@@ -34,19 +34,25 @@ const mutateTest = {
 
 const schemaTest = {
     id: 'schema',
-    query: `
-    query($url: String!) {
-      schema(url: $url)
-    }
-  `,
+    query: 'query($url: String!) { schema(url: $url) }',
     variables: { url: '', query: '' },
     context: {},
     expected: { data: { schema: data } }
 };
 
+const customTypeTest = {
+    id: 'custom',
+    query: 'query { custom }',
+    variables: {},
+    context: {},
+    expected: { data: { custom: data } }
+};
+
 describe('ProxyServer', () => {
-    const cases = [queryTest, mutateTest, schemaTest];
-    const mockSchema = new ProxyServer().executableSchema;
+    const cases = [queryTest, mutateTest, schemaTest, customTypeTest];
+    const mockSchema = new ProxyServer({
+        typeDefs: `type Query { custom: String! }`
+    }).executableSchema;
 
     addMockFunctionsToSchema({
         schema: mockSchema,
@@ -75,5 +81,14 @@ describe('ProxyServer', () => {
 
     test('has context passed to constructor', () => {
         expect(new ProxyServer({ context: data }).context).toEqual(data);
+    });
+
+    test('has typeDefs passed to constructor as file path', () => {
+        expect(
+            () =>
+                new ProxyServer({
+                    typeDefs: 'test/types.graphql'
+                })
+        ).not.toThrow();
     });
 });
