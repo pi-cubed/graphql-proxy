@@ -1,7 +1,7 @@
 {
     "name": "@pi-cubed/graphql-proxy",
     "description": "Add proxy abilities to GraphQL servers",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "main": "build/index.js",
     "license": "MIT",
     "scripts": {
@@ -11,13 +11,19 @@
         "dev": "yarn && run-p \"build --watch\" \"test --watch\" \"lint --watch\"",
         "cz": "git-cz",
         "precommit": "pretty-quick --staged",
-        "prepublishOnly": "run-s build test"
+        "prepublishOnly": "run-s build test",
+        "build:server": "mkdir -p build && babel src -d server",
+        "start:server": "node server/server.js",
+        "start": "run-s build:server start:server"
     },
     "devDependencies": {
         "@neutrinojs/airbnb-base": "^8.2.3",
         "@neutrinojs/jest": "^8.2.3",
         "@neutrinojs/library": "^8.2.3",
+        "babel-cli": "^6.26.0",
         "babel-plugin-dynamic-import-node": "^1.2.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-env": "^1.7.0",
         "cz-conventional-changelog": "^2.1.0",
         "husky": "^0.14.3",
         "neutrino": "^8.2.3",
