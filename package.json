@@ -13,8 +13,8 @@
         "precommit": "pretty-quick --staged",
         "prepublishOnly": "run-s build test",
         "build:server": "mkdir -p build && babel src -d server",
-        "start:server": "node server/server.js",
-        "start": "run-s build:server start:server"
+        "start": "node server/server.js",
+        "postinstall": "yarn build:server"
     },
     "devDependencies": {
         "@neutrinojs/airbnb-base": "^8.2.3",
