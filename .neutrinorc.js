@@ -3,7 +3,8 @@ const ESLINT_RULES = {
     indent: 'off',
     'no-unused-vars': ['warn'],
     'no-confusing-arrow': 'off',
-    'function-paren-newline': 'off'
+    'function-paren-newline': 'off',
+    'no-console': 'off'
 };
 
 module.exports = {

@@ -3,6 +3,19 @@ import { GraphQLClient } from 'graphql-request';
 import { GraphQLServer } from 'graphql-yoga';
 import { importSchema } from 'graphql-import';
 import { mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient from 'apollo-boost';
+
+const uri = 'http://proxy-graphql.herokuapp.com';
+
+/**
+ * TODO docs
+ */
+export const Provider = ({ children }) => (
+    <ApolloProvider client={new ApolloClient({ uri })}>
+        {children}
+    </ApolloProvider>
+);
 
 /**
  * TODO docs
