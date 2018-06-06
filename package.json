@@ -41,7 +41,9 @@
         "graphql-request": "^1.6.0",
         "graphql-yoga": "^1.14.6",
         "merge-graphql-schemas": "^1.5.1",
-        "react-apollo": "^2.1.4"
+        "react": "^16.4.0",
+        "react-apollo": "^2.1.4",
+        "react-dom": "^16.4.0"
     },
     "author": "Pi Cubed",
     "homepage": "https://github.com/pi-cubed/graphql-proxy",
