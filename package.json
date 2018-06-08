@@ -1,7 +1,7 @@
 {
     "name": "@pi-cubed/graphql-proxy",
     "description": "Add proxy abilities to GraphQL servers",
-    "version": "0.3.1",
+    "version": "0.2.2",
     "main": "build/index.js",
     "license": "MIT",
     "scripts": {
@@ -34,16 +34,12 @@
         "webpack": "4"
     },
     "dependencies": {
-        "apollo-boost": "^0.1.7",
         "babel-runtime": "^6.26.0",
         "graphql": "^0.13.2",
         "graphql-import": "^0.6.0",
         "graphql-request": "^1.6.0",
         "graphql-yoga": "^1.14.6",
-        "merge-graphql-schemas": "^1.5.1",
-        "react": "^16.4.0",
-        "react-apollo": "^2.1.4",
-        "react-dom": "^16.4.0"
+        "merge-graphql-schemas": "^1.5.1"
     },
     "author": "Pi Cubed",
     "homepage": "https://github.com/pi-cubed/graphql-proxy",
