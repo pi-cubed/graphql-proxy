@@ -15,19 +15,19 @@ const getSchema = async (_, { url }) => {
 /**
  * TODO docs
  */
-const request = async (_, { url, query, mutation }) => {
+const request = async (_, { url, query, mutation, variables }) => {
     const client = new GraphQLClient(url);
-    const data = await client.request(query || mutation);
+    const data = await client.request(query || mutation, JSON.parse(variables));
     return JSON.stringify(data);
 };
 
 export const proxyTypeDefs = `
     type Query {
         schema(url: String!): String!
-        query(url: String!, query: String!): String!
+        query(url: String!, query: String!, variables: String): String!
     }
     type Mutation {
-        mutate(url: String!, mutation: String!): String!
+        mutate(url: String!, mutation: String!, variables: String): String!
     }
 `;
 
