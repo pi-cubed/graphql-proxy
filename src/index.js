@@ -7,30 +7,41 @@ import { mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 /**
  * TODO docs
  */
-const getSchema = async (_, { url }) => {
-    const client = new GraphQLClient(url);
-    return JSON.stringify(await client.request(introspectionQuery));
-};
+const getClient = (url, token) =>
+    new GraphQLClient(url, {
+        headers: { authorization: token ? `Bearer ${token}` : null }
+    });
 
 /**
  * TODO docs
  */
-const request = async (_, { url, query, mutation, variables }) => {
-    const client = new GraphQLClient(url);
-    const data = await client.request(query || mutation, JSON.parse(variables));
-    return JSON.stringify(data);
-};
+const send = (url, token) => async args =>
+    JSON.stringify(await getClient(url, token).request(args));
+
+/**
+ * TODO docs
+ */
+const getSchema = (_, { url, token }) => send(url, token)(introspectionQuery);
+
+/**
+ * TODO docs
+ */
+const request = (_, { url, query, mutation, variables, token }) =>
+    send(url, token)(query || mutation, variables && JSON.parse(variables));
 
 export const proxyTypeDefs = `
     type Query {
-        schema(url: String!): String!
-        query(url: String!, query: String!, variables: String): String!
+        schema(url: String!, token: String): String!
+        query(url: String!, query: String!, variables: String, token: String): String!
     }
     type Mutation {
-        mutate(url: String!, mutation: String!, variables: String): String!
+        mutate(url: String!, mutation: String!, variables: String, token: String): String!
     }
 `;
 
+/**
+ * TODO docs
+ */
 const getProxyResolvers = ({
     query = 'query',
     mutate = 'mutate',
@@ -45,6 +56,9 @@ const getProxyResolvers = ({
     }
 });
 
+/**
+ * TODO docs
+ */
 const getTypeDefs = typeDefs =>
     typeof typeDefs === 'string' && typeDefs.endsWith('graphql')
         ? importSchema(typeDefs)
