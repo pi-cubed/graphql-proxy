@@ -57,17 +57,13 @@ typings/
 # dotenv environment variables file
 .env
 
-# next.js build output
-.next
+# GitBook generated files
+_book
 
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless
-
-# Neutrino build
-build
+# nwb builds
+es
+lib
+umd
 
 # server build
 server
