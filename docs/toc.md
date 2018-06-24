@@ -5,7 +5,7 @@
 ---
 
 -   [API Reference](api.md)
-    -   [Put](api.md#Put)
+    -   [ProxyServer](api.md#ProxyServer)
 
 ---
 
