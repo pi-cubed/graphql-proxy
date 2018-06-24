@@ -60,7 +60,7 @@ const getProxyResolvers = ({
  * TODO docs
  */
 const getTypeDefs = typeDefs =>
-    typeof typeDefs === 'string' && typeDefs.endsWith('graphql')
+    typeof typeDefs === 'string' && typeDefs.endsWith('.graphql')
         ? importSchema(typeDefs)
         : typeDefs;
 
