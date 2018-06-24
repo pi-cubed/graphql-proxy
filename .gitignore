@@ -60,10 +60,8 @@ typings/
 # GitBook generated files
 _book
 
-# nwb builds
-es
-lib
-umd
+# neutrino build
+build
 
 # server build
 server
